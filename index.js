@@ -37,6 +37,18 @@ app.get("/students",(req,res)=>{
     res.send(student)
 })
 
+app.post("/enterStudents",(req,res)=>{
+    const studends=req.body;
+    const data=fs.readFileSync("./db.json","utf-8")
+    const parsed_data=JSON.parse(data)
+    parsed_data.studends.push(studends)
+    // console.log(parsed_data)
+    const newData=JSON.stringify(parsed_data)
+    console.log(newData)
+    fs.writeFileSync("./db.json",newData)
+    res.send("Thanks")
+})
+
 
   app.listen(7000,()=>{
     console.log("Listening on port 7000")
