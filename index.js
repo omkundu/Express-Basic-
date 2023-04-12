@@ -9,21 +9,34 @@ app.get("/",(req,res)=>{
     res.send("hello");
 })
 
-app.post("/adddata",(req,res)=>{
-    console.log(req.body)
-    res.end("accepted data")
-})
+// app.post("/adddata",(req,res)=>{
+//     console.log(req.body)
+//     res.end("accepted data")
+// })
 
 
-app.post("/addStudent",(req,res)=>{
-    fs.writeFileSync("./students.txt",JSON.stringify(req.body),"utf-8")
-    res.send("accepted data");
-})
+// app.post("/addStudent",(req,res)=>{
+//     fs.writeFileSync("./students.txt",JSON.stringify(req.body),"utf-8")
+//     res.send("accepted data");
+// })
 
+// app.get("/students",(req,res)=>{
+//     const data=fs.readFileSync("./students.txt","utf-8")
+//     res.send(data);
+// })
+
+// CRUD
 app.get("/students",(req,res)=>{
-    const data=fs.readFileSync("./students.txt","utf-8")
-    res.send(data);
+    const data=fs.readFileSync("./db.json","utf-8")
+    // console.log(data);
+
+    const parsed_data=JSON.parse(data)
+    const student=parsed_data.studends
+    console.log(student)
+    // console.log("in Progress..")
+    res.send(student)
 })
+
 
   app.listen(7000,()=>{
     console.log("Listening on port 7000")

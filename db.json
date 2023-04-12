@@ -1,0 +1,17 @@
+{
+    "studends":[
+        {
+            "id":"1",
+            "city":"pune"
+        },
+        {
+            "id":"2",
+            "city":"jharkhand"
+        },
+        {
+            "id":"3",
+            "city":"kolkata"
+        }
+    ]
+    
+}
